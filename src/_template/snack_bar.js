@@ -1,7 +1,10 @@
 import * as React from 'react';
-import {View, StyleSheet} from 'react-native';
-import {Button, Snackbar} from 'react-native-paper';
+import {StyleSheet} from 'react-native';
+import {Snackbar} from 'react-native-paper';
+import {connect} from 'react-redux';
+import {alertActions} from '../_actions';
 import {CComponent} from '../_components';
+import {theme} from '../_helpers/theme';
 
 const classes = StyleSheet.create({
   container: {
@@ -10,32 +13,43 @@ const classes = StyleSheet.create({
   },
 });
 
-class Alert extends CComponent {
-  state = {visible: false};
-
-  onToggleSnackBar = () => this.updateState({visible: !this.state.visible});
-
-  onDismissSnackBar = () => this.updateState({visible: false});
-
+class snackBar extends CComponent {
   render() {
-    const state = this.state;
+    const {message, visiblity, clearAlert, type} = this.props;
+    console.log('Snackbar', visiblity, message);
     return (
-      <View style={classes.container}>
-        <Button onPress={this.onToggleSnackBar}>
-          {state.visible ? 'Hide' : 'Show'}
-        </Button>
-        <Snackbar
-          visible={state.visible}
-          onDismiss={this.onDismissSnackBar}
-          action={{
-            label: 'Undo',
-            onPress: () => {
-              // Do something
-            },
-          }}>
-          Hey there! I'm a Snackbar.
-        </Snackbar>
-      </View>
+      <Snackbar
+        style={{
+          backgroundColor:
+            type === 'success'
+              ? theme.colors.primary
+              : type === 'error'
+              ? theme.colors.error
+              : theme.colors.disabled,
+          borderRadius: 4,
+        }}
+        theme={{colors: {accent: 'white'}}}
+        visible={visiblity}
+        onDismiss={clearAlert}
+        duration={1000}
+        action={{
+          label: 'Close',
+          onPress: clearAlert,
+        }}>
+        {message}
+      </Snackbar>
     );
   }
 }
+
+const actionCreators = {
+  clearAlert: alertActions.clear,
+};
+
+const mapStateToProps = (state) => {
+  const {message, visiblity, type} = state.alert;
+  return {message, visiblity, type};
+};
+
+const CSnackBar = connect(mapStateToProps, actionCreators)(snackBar);
+export default CSnackBar;

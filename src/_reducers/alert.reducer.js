@@ -1,22 +1,20 @@
-import { alertConstants, alertTypes } from "../_constants";
-import { v4 as uuidv4 } from "uuid";
-
+import {alertConstants, alertTypes} from '../_constants';
 export function alert(state = {}, action) {
   switch (action.type) {
     case alertConstants.SUCCESS:
       return {
         type: alertTypes.SUCCESS,
         message: action.message,
-        uuid: uuidv4(),
+        visiblity: true,
       };
     case alertConstants.ERROR:
       return {
         type: alertTypes.ERROR,
         message: action.message,
-        uuid: uuidv4(),
+        visiblity: true,
       };
     case alertConstants.CLEAR:
-      return {};
+      return {type: undefined, message: undefined, visiblity: false};
     default:
       return state;
   }
