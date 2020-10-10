@@ -128,7 +128,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.react_mobileapp"
+        applicationId "com.ashok"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

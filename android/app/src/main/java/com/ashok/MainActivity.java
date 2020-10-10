@@ -1,4 +1,4 @@
-package com.react_mobileapp;
+package com.ashok;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "react_mobileapp";
+    return "ashok";
   }
 }
