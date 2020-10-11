@@ -16,7 +16,6 @@ const classes = StyleSheet.create({
 class snackBar extends CComponent {
   render() {
     const {message, visiblity, clearAlert, type} = this.props;
-    console.log('Snackbar', visiblity, message);
     return (
       <Snackbar
         style={{

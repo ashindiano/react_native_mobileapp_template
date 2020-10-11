@@ -7,19 +7,18 @@
  */
 
 import React from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
 
-import {Header, BottomNavigator} from './_template';
 import CSnackBar from './_template/snack_bar';
+import {SideMenu} from './_template/side_menu';
 
 const App = () => {
   return (
-    <>
-      <Header />
-      <SafeAreaView></SafeAreaView>
+    <NavigationContainer>
+      <SideMenu />
       <CSnackBar />
-      {/* <BottomNavigator /> */}
-    </>
+    </NavigationContainer>
   );
 };
 

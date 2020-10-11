@@ -1,11 +1,24 @@
 import * as React from 'react';
 import {BottomNavigation, Text} from 'react-native-paper';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
-const MusicRoute = () => <Text>Music</Text>;
+const MusicRoute = () => (
+  <SafeAreaView>
+    <Text>Music</Text>
+  </SafeAreaView>
+);
 
-const AlbumsRoute = () => <Text>Albums</Text>;
+const AlbumsRoute = () => (
+  <SafeAreaView>
+    <Text>Albums</Text>
+  </SafeAreaView>
+);
 
-const RecentsRoute = () => <Text>Recents</Text>;
+const RecentsRoute = () => (
+  <SafeAreaView>
+    <Text>Recent</Text>
+  </SafeAreaView>
+);
 
 export const BottomNavigator = () => {
   const [index, setIndex] = React.useState(0);
