@@ -8,7 +8,7 @@ import {BottomNavigator} from './bottom_navigation';
 
 export default class DashBoardScreen extends CComponent {
   render() {
-    const {navigation, errorAlert} = this.props;
+    const {navigation, errorSnackBar} = this.props;
     return (
       <>
         <Appbar.Header>
@@ -17,7 +17,7 @@ export default class DashBoardScreen extends CComponent {
               <Appbar.BackAction onPress={() => navigation.goBack()} />
             )}
           <Appbar.Content title="Dashboard" />
-          <Appbar.Action icon="magnify" onPress={() => errorAlert('Test')} />
+          <Appbar.Action icon="magnify" onPress={() => errorSnackBar('Test')} />
         </Appbar.Header>
         <BottomNavigator />
       </>

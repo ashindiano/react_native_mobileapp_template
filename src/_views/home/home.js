@@ -8,7 +8,7 @@ import {DrawerActions} from '@react-navigation/native';
 
 export default class HomeScreen extends CComponent {
   render() {
-    const {navigation} = this.props;
+    const {navigation, errorSnackBar} = this.props;
     return (
       <>
         <Appbar.Header>
@@ -27,16 +27,7 @@ export default class HomeScreen extends CComponent {
         </Appbar.Header>
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
           <Text>Home Screen</Text>
-          <Button
-            onPress={() => {
-              /* 1. Navigate to the Details route with params */
-              navigation.navigate('Dashboard', {
-                itemId: 86,
-                otherParam: 'anything you want here',
-              });
-            }}>
-            Dashboard
-          </Button>
+          <Button onPress={() => errorSnackBar('Welcome')}>Welcome</Button>
         </View>
       </>
     );

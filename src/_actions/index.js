@@ -1,1 +1,1 @@
-export * from './alert.actions';
+export * from './snackbar.actions';

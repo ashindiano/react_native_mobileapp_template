@@ -1,37 +1,22 @@
 import * as React from 'react';
 import {BottomNavigation, Text} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
-
-const MusicRoute = () => (
-  <SafeAreaView>
-    <Text>Music</Text>
-  </SafeAreaView>
-);
-
-const AlbumsRoute = () => (
-  <SafeAreaView>
-    <Text>Albums</Text>
-  </SafeAreaView>
-);
-
-const RecentsRoute = () => (
-  <SafeAreaView>
-    <Text>Recent</Text>
-  </SafeAreaView>
-);
+import {Tab1} from './tabs/tab1';
+import {Tab2} from './tabs/tab2';
+import {Tab3} from './tabs/tab3';
 
 export const BottomNavigator = () => {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
-    {key: 'music', title: 'Music', icon: 'history'},
-    {key: 'albums', title: 'Albums', icon: 'album'},
-    {key: 'recents', title: 'Recents', icon: 'history'},
+    {key: 'tab1', title: 'TAB 1', icon: 'history'},
+    {key: 'tab2', title: 'TAB 2', icon: 'album'},
+    {key: 'tab3', title: 'TAB 3', icon: 'history'},
   ]);
 
   const renderScene = BottomNavigation.SceneMap({
-    music: MusicRoute,
-    albums: AlbumsRoute,
-    recents: RecentsRoute,
+    tab1: Tab1,
+    tab2: Tab2,
+    tab3: Tab3,
   });
 
   return (

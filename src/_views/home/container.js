@@ -1,10 +1,14 @@
 import HomeScreen from './home';
 import {connect} from 'react-redux';
+import {snackBarActions} from '../../_actions';
 
-const actionCreators = {};
+const actionCreators = {
+  successSnackBar: snackBarActions.success,
+  errorSnackBar: snackBarActions.error,
+};
 
 const mapStateToProps = (state) => {
-  const {message, visiblity, type} = state.alert;
+  const {message, visiblity, type} = state.snackBar;
   return {message, visiblity, type};
 };
 

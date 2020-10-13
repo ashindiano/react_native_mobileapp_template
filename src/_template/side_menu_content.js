@@ -12,6 +12,7 @@ import {
   TouchableRipple,
   Switch,
 } from 'react-native-paper';
+import {theme} from '../_helpers/theme';
 
 export function DrawerContent(props) {
   return (
@@ -21,26 +22,12 @@ export function DrawerContent(props) {
           <Avatar.Image
             source={{
               uri:
-                'https://pbs.twimg.com/profile_images/952545910990495744/b59hSXUd_400x400.jpg',
+                'https://media-exp1.licdn.com/dms/image/C5103AQHVzvcqTcNK8A/profile-displayphoto-shrink_200_200/0?e=1608163200&v=beta&t=H4SncZqtH2ZOCYtcrfiJQQ5DIWIt7reX0jmucN35xeQ',
             }}
             size={50}
           />
-          <Title style={styles.title}>Dawid Urbaniak</Title>
-          <Caption style={styles.caption}>@trensik</Caption>
-          <View style={styles.row}>
-            <View style={styles.section}>
-              <Paragraph style={[styles.paragraph, styles.caption]}>
-                202
-              </Paragraph>
-              <Caption style={styles.caption}>Following</Caption>
-            </View>
-            <View style={styles.section}>
-              <Paragraph style={[styles.paragraph, styles.caption]}>
-                159
-              </Paragraph>
-              <Caption style={styles.caption}>Followers</Caption>
-            </View>
-          </View>
+          <Title style={styles.title}>Ash Indiano</Title>
+          <Caption style={styles.caption}>Senior Developer</Caption>
         </View>
         <Drawer.Section style={styles.drawerSection}>
           <DrawerItem
@@ -52,23 +39,22 @@ export function DrawerContent(props) {
               });
             }}
           />
-          <DrawerItem label="Preferences" onPress={() => {}} />
-          <DrawerItem label="Bookmarks" onPress={() => {}} />
+          <DrawerItem label="Reports" onPress={() => {}} />
         </Drawer.Section>
         <Drawer.Section title="Preferences">
           <TouchableRipple onPress={() => {}}>
             <View style={styles.preference}>
-              <Text>Dark Theme</Text>
+              <Text>Disable Something</Text>
               <View pointerEvents="none">
-                <Switch value={false} />
+                <Switch value={true} color={theme.colors.primary} />
               </View>
             </View>
           </TouchableRipple>
           <TouchableRipple onPress={() => {}}>
             <View style={styles.preference}>
-              <Text>RTL</Text>
+              <Text>Enable Something</Text>
               <View pointerEvents="none">
-                <Switch value={false} />
+                <Switch value={false} color={theme.colors.primary} />
               </View>
             </View>
           </TouchableRipple>
