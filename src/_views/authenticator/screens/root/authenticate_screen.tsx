@@ -14,24 +14,23 @@ type Props = {
 
 export default class authenticateScreen extends CComponent {
   state = {
-    userToken: undefined,
+    tokenAcquired: false,
   };
-
   componentDidMount() {
-    getUserToken().then((token) =>
-      this.updateState({userToken: token ? token : null}),
-    );
+    getUserToken().then((token) => {
+      this.updateState({tokenAcquired: token !== undefined});
+      this.props.updateUserToken(token);
+    });
   }
 
   render() {
     const navigation = this.props.navigation;
-    const state = this.state;
-    const userToken = this.props.token || state.userToken;
-    return userToken === undefined ? (
+    const userToken = this.props.token;
+    return this.state.tokenAcquired === false ? (
       <Background>
         <Text>Loading...</Text>
       </Background>
-    ) : userToken === null ? (
+    ) : !userToken ? (
       <Background>
         <Button
           mode="contained"
