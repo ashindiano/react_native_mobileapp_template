@@ -32,20 +32,38 @@ function drawerContent(props) {
         </View>
         <Drawer.Section style={styles.drawerSection}>
           <DrawerItem
-            label="DashBoard"
+            label="Home"
             onPress={() => {
-              props.navigation.navigate('Dashboard', {
-                itemId: 86,
-                otherParam: 'anything you want here',
+              props.navigation.reset({
+                index: 0,
+                routes: [{name: 'Home'}],
+              });
+            }}
+          />
+          <DrawerItem
+            label="Dashboard"
+            onPress={() => {
+              props.navigation.reset({
+                index: 0,
+                routes: [{name: 'Dashboard'}],
               });
             }}
           />
           <DrawerItem
             label="Grid Screen"
             onPress={() => {
-              props.navigation.navigate('GridScreen', {
-                itemId: 86,
-                otherParam: 'anything you want here',
+              props.navigation.reset({
+                index: 0,
+                routes: [{name: 'GridScreen'}],
+              });
+            }}
+          />
+          <DrawerItem
+            label="Table Screen"
+            onPress={() => {
+              props.navigation.reset({
+                index: 0,
+                routes: [{name: 'TableScreen'}],
               });
             }}
           />
@@ -68,9 +86,10 @@ function drawerContent(props) {
             </View>
           </TouchableRipple>
         </Drawer.Section>
-        <Drawer.Section>
+        <Drawer.Section style={styles.logoutSection}>
           <DrawerItem
             label="Logout"
+            labelStyle={{fontWeight: 'bold', color: theme.colors.primary}}
             onPress={() => {
               removeUserToken();
               props.clearUserToken();
@@ -113,6 +132,9 @@ const styles = StyleSheet.create({
   },
   drawerSection: {
     marginTop: 15,
+  },
+  logoutSection: {
+    marginBottom: 15,
   },
   preference: {
     flexDirection: 'row',
