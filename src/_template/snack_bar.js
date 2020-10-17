@@ -4,7 +4,7 @@ import {Snackbar} from 'react-native-paper';
 import {connect} from 'react-redux';
 import {snackBarActions} from '../_actions';
 import {CComponent} from '../_components';
-import {theme} from '../_helpers/theme';
+import {theme} from '../_core/theme';
 
 const classes = StyleSheet.create({
   container: {

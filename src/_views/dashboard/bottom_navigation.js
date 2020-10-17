@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {BottomNavigation, Text} from 'react-native-paper';
-import {SafeAreaView} from 'react-native-safe-area-context';
 import {Tab1} from './tabs/tab1';
 import {Tab2} from './tabs/tab2';
 import {Tab3} from './tabs/tab3';

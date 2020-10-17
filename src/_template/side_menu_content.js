@@ -1,20 +1,21 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {View, StyleSheet} from 'react-native';
 import {DrawerItem, DrawerContentScrollView} from '@react-navigation/drawer';
 import {
-  useTheme,
   Avatar,
   Title,
   Caption,
-  Paragraph,
   Drawer,
   Text,
   TouchableRipple,
   Switch,
 } from 'react-native-paper';
-import {theme} from '../_helpers/theme';
+import {theme} from '../_core/theme';
+import {removeUserToken} from '../_core/user';
+import {userActions} from '../_actions';
 
-export function DrawerContent(props) {
+function drawerContent(props) {
   return (
     <DrawerContentScrollView {...props}>
       <View style={styles.drawerContent}>
@@ -39,7 +40,15 @@ export function DrawerContent(props) {
               });
             }}
           />
-          <DrawerItem label="Reports" onPress={() => {}} />
+          <DrawerItem
+            label="Grid Screen"
+            onPress={() => {
+              props.navigation.navigate('GridScreen', {
+                itemId: 86,
+                otherParam: 'anything you want here',
+              });
+            }}
+          />
         </Drawer.Section>
         <Drawer.Section title="Preferences">
           <TouchableRipple onPress={() => {}}>
@@ -58,6 +67,15 @@ export function DrawerContent(props) {
               </View>
             </View>
           </TouchableRipple>
+        </Drawer.Section>
+        <Drawer.Section>
+          <DrawerItem
+            label="Logout"
+            onPress={() => {
+              removeUserToken();
+              props.clearUserToken();
+            }}
+          />
         </Drawer.Section>
       </View>
     </DrawerContentScrollView>
@@ -103,3 +121,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
 });
+
+const actionCreators = {
+  clearUserToken: userActions.clearToken,
+};
+
+const mapStateToProps = (state) => {
+  const {token} = state.user;
+  return {token};
+};
+
+export const DrawerContent = connect(
+  mapStateToProps,
+  actionCreators,
+)(drawerContent);
