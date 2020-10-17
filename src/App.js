@@ -1,28 +1,27 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import {createAppContainer} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
 
-import React from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
+import {
+  LoginScreen,
+  RegisterScreen,
+  ForgotPasswordScreen,
+} from './_views/authenticator/screens';
+import AuthenticateScreen from './_views/authenticator/screens/root/container';
 
-import {Header, BottomNavigator} from './_template';
-import CSnackBar from './_template/snack_bar';
+import LoggedRootScreen from './_views/LoggedRootScreen';
 
-const App = () => {
-  return (
-    <>
-      <Header />
-      <SafeAreaView></SafeAreaView>
-      <CSnackBar />
-      {/* <BottomNavigator /> */}
-    </>
-  );
-};
+const Router = createStackNavigator(
+  {
+    AuthenticateScreen,
+    LoginScreen,
+    RegisterScreen,
+    ForgotPasswordScreen,
+    LoggedRootScreen,
+  },
+  {
+    initialRouteName: 'AuthenticateScreen',
+    headerMode: 'none',
+  },
+);
 
-const styles = StyleSheet.create({});
-
-export default App;
+export default createAppContainer(Router);

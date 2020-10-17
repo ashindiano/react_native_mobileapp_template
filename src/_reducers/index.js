@@ -1,8 +1,10 @@
-import { combineReducers } from "redux";
-import { alert } from "./alert.reducer";
-import { template } from "./template.reducer";
+import {combineReducers} from 'redux';
+import {snackBar} from './snackbar.reducer';
+import {template} from './template.reducer';
+import {user} from './user.reducer';
 
 export const rootReducer = combineReducers({
   template,
-  alert,
+  snackBar,
+  user,
 });

@@ -4,8 +4,8 @@ import {Provider as StoreProvider} from 'react-redux';
 import {Provider as PaperProvider} from 'react-native-paper';
 import {name as appName} from './app.json';
 import App from './src/App';
-import {store} from './src/_helpers/store';
-import {theme} from './src/_helpers/theme';
+import {store} from './src/_core/store';
+import {theme} from './src/_core/theme';
 
 export default function Main() {
   return (

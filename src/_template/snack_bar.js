@@ -2,9 +2,9 @@ import * as React from 'react';
 import {StyleSheet} from 'react-native';
 import {Snackbar} from 'react-native-paper';
 import {connect} from 'react-redux';
-import {alertActions} from '../_actions';
+import {snackBarActions} from '../_actions';
 import {CComponent} from '../_components';
-import {theme} from '../_helpers/theme';
+import {theme} from '../_core/theme';
 
 const classes = StyleSheet.create({
   container: {
@@ -13,10 +13,9 @@ const classes = StyleSheet.create({
   },
 });
 
-class snackBar extends CComponent {
+class snackbar extends CComponent {
   render() {
-    const {message, visiblity, clearAlert, type} = this.props;
-    console.log('Snackbar', visiblity, message);
+    const {message, visiblity, clearSnackBar, type} = this.props;
     return (
       <Snackbar
         style={{
@@ -30,11 +29,11 @@ class snackBar extends CComponent {
         }}
         theme={{colors: {accent: 'white'}}}
         visible={visiblity}
-        onDismiss={clearAlert}
+        onDismiss={clearSnackBar}
         duration={1000}
         action={{
           label: 'Close',
-          onPress: clearAlert,
+          onPress: clearSnackBar,
         }}>
         {message}
       </Snackbar>
@@ -43,13 +42,13 @@ class snackBar extends CComponent {
 }
 
 const actionCreators = {
-  clearAlert: alertActions.clear,
+  clearSnackBar: snackBarActions.clear,
 };
 
 const mapStateToProps = (state) => {
-  const {message, visiblity, type} = state.alert;
+  const {message, visiblity, type} = state.snackBar;
   return {message, visiblity, type};
 };
 
-const CSnackBar = connect(mapStateToProps, actionCreators)(snackBar);
+const CSnackBar = connect(mapStateToProps, actionCreators)(snackbar);
 export default CSnackBar;

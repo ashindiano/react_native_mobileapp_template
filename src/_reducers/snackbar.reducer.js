@@ -1,19 +1,19 @@
-import {alertConstants, alertTypes} from '../_constants';
-export function alert(state = {}, action) {
+import {snackBarConstants, snackBarTypes} from '../_constants';
+export function snackBar(state = {}, action) {
   switch (action.type) {
-    case alertConstants.SUCCESS:
+    case snackBarConstants.SUCCESS:
       return {
-        type: alertTypes.SUCCESS,
+        type: snackBarTypes.SUCCESS,
         message: action.message,
         visiblity: true,
       };
-    case alertConstants.ERROR:
+    case snackBarConstants.ERROR:
       return {
-        type: alertTypes.ERROR,
+        type: snackBarTypes.ERROR,
         message: action.message,
         visiblity: true,
       };
-    case alertConstants.CLEAR:
+    case snackBarConstants.CLEAR:
       return {type: undefined, message: undefined, visiblity: false};
     default:
       return state;
